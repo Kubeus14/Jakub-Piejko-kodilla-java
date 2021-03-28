@@ -6,12 +6,8 @@ import com.crud.tasks.mapper.TaskMapper;
 import com.crud.tasks.service.DbService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -27,8 +23,31 @@ public class TaskController {
         List<Task> tasks = service.getAllTasks();
         return taskMapper.mapToTaskDtoList(tasks);
     }
+
     @RequestMapping(method = RequestMethod.GET, value = "getTaskById")
     public TaskDto getTaskById(Long taskId) {
         return new TaskDto(1L, "test title", "test_content");
     }
+    @RequestMapping(method = RequestMethod.GET, value = "getTask")
+    public TaskDto getTask(@RequestParam Long taskId) throws TaskNotFoundException {
+        return taskMapper.mapToTaskDto(
+                service.getTask(taskId).orElseThrow(TaskNotFoundException::new)
+        );
+    }
+    @RequestMapping(method = RequestMethod.PUT, value = "updateTask")
+    public TaskDto updateTask(@RequestBody TaskDto taskDto) {
+        Task task = taskMapper.mapToTask(taskDto);
+        Task savedTask = service.saveTask(task);
+        return taskMapper.mapToTaskDto(savedTask);
+    }
+    @RequestMapping(method = RequestMethod.DELETE, value = "deleteTaskByID")
+    public void deleteTaskBYID( @RequestParam Long taskId) throws TaskNotFoundException {
+
+        if (service.getTask(taskId).isPresent())
+            service.deleteTaskByID(taskId);
+        else
+            throw new TaskNotFoundException();
+    }
+
+
 }
