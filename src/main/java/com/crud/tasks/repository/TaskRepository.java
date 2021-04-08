@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
-
 @Repository
 public interface TaskRepository extends CrudRepository<Task, Long> {
     @Override
@@ -22,3 +21,4 @@ public interface TaskRepository extends CrudRepository<Task, Long> {
     @Override
     void deleteById(Long id);
 }
+
