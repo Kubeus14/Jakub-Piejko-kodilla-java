@@ -18,6 +18,8 @@ public class TaskController {
     private final DbService service;
     private final TaskMapper taskMapper;
 
+
+
     @RequestMapping(method = RequestMethod.GET, value = "getTasks")
     public List<TaskDto> getTasks() {
         List<Task> tasks = service.getAllTasks();
@@ -26,7 +28,7 @@ public class TaskController {
 
     @RequestMapping(method = RequestMethod.GET, value = "getTaskById")
     public TaskDto getTaskById(Long taskId) {
-        return new TaskDto(1L, "test title", "test_content");
+        return new TaskDto(1,"test title","test content");
     }
     @RequestMapping(method = RequestMethod.POST, value = "createTask", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void createTask(@RequestBody TaskDto taskDto) {
