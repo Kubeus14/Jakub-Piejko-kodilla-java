@@ -9,6 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/v1/task")
@@ -28,11 +29,11 @@ public class TaskController {
     }
     @RequestMapping(method = RequestMethod.GET, value = "getTaskById")
     public TaskDto getTaskById(Long taskId) {
-        return new TaskDto(1, "test title", "test content");
+        return new TaskDto((long) 1, "test title", "test content");
     }
 
 
-        @RequestMapping(method = RequestMethod.POST, value = "createTask", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(method = RequestMethod.POST, value = "createTask", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void createTask(@RequestBody TaskDto taskDto) {
         Task task = taskMapper.mapToTask(taskDto);
         service.saveTask(task);
@@ -59,3 +60,4 @@ public class TaskController {
     }
 
 }
+
