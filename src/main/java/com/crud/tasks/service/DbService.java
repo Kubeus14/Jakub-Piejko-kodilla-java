@@ -7,11 +7,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
 @Service
 @RequiredArgsConstructor
-public class DbService {
-
+public class DbService{
     private final TaskRepository repository;
     public List<Task> getAllTasks() {
         return repository.findAll();
@@ -26,5 +24,4 @@ public class DbService {
     public void deleteTaskByID(Long id){
         repository.deleteById(id);
     }
-
 }
