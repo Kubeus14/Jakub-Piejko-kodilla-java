@@ -3,6 +3,8 @@ package com.crud.tasks.trello.client;
 import com.crud.tasks.domain.CreatedTrelloCard;
 import com.crud.tasks.domain.TrelloCardDto;
 import com.crud.tasks.trello.config.TrelloConfig;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,12 +26,15 @@ public class TrelloClient {
     private final TrelloConfig trelloConfig;
 
 
+
     @Value("${trello.api.endpoint.prod}")
     private String trelloApiEndpoint;
     @Value("${trello.app.key}")
     private String trelloAppKey;
     @Value("${trello.app.token}")
     private String trelloToken;
+
+
 
     public List<TrelloBoardDto> getTrelloBoards() {
         URI url = UriComponentsBuilder.fromHttpUrl(trelloConfig.getTrelloApiEndpoint() + "/members/" + trelloConfig.getTrelloUser() + "/boards")
