@@ -1,7 +1,7 @@
 package com.crud.tasks.mapper;
 
 import com.crud.tasks.domain.*;
-import com.crud.tasks.trello.client.TrelloBoardDto;
+import com.crud.tasks.trello.TrelloBoardDto;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

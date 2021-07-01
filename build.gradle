@@ -28,6 +28,7 @@ dependencies {
 	}
 	compile('io.springfox:springfox-swagger2:2.9.2')
 	compile('io.springfox:springfox-swagger-ui:2.9.2')
+	testImplementation 'com.google.code.gson:gson'
 
 
 	testCompileOnly 'org.projectlombok:lombok:1.18.16'
