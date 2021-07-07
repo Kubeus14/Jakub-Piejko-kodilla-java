@@ -18,6 +18,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'junit:junit:4.13.1'
     runtimeOnly 'mysql:mysql-connector-java'
 	runtimeOnly 'org.postgresql:postgresql'
@@ -35,6 +36,7 @@ dependencies {
 	testAnnotationProcessor 'org.projectlombok:lombok:1.18.16'
 
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 }
 
 test {
